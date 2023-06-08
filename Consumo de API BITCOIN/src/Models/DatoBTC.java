@@ -1,8 +1,9 @@
 package Models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DatoBTC {
+public class DatoBTC implements Serializable {
 
     private String fecha;
     private double precio;

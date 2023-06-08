@@ -1,3 +1,4 @@
+import Models.ControladoraDeArchivo;
 import Models.DatoBTC;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,34 +27,68 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
+        ControladoraDeArchivo<DatoBTC> controladoraDeArchivo = new ControladoraDeArchivo<>(datosAPI);
+        //controladoraDeArchivo.guardarArchivo();
+
+        ArrayList<DatoBTC> datosArchivo = new ArrayList<>();
+        datosArchivo = controladoraDeArchivo.leerArchivo(datosArchivo);
+
+
         String info = "";
 
-        for(DatoBTC dato : datosAPI)
+       for(DatoBTC dato : datosArchivo)
         {
+            System.out.println("\nARCHIVO\n");
             System.out.println(dato.toString());
         }
 
-    }
+        /*
+        private String fecha;
+        private double precio;
+        private double abierto;
+        private double alto;
+        private double changePercent;
+        private String volumen;
+        */
+        JSONArray jsonArrayDatoBtc = new JSONArray();
+        try {
 
-    public static DatoBTC jsonToDatoBTC(JSONObject jsonObject, DatoBTC datoBTC)
-    {
-        try
-        {
-            datoBTC.setFecha(jsonObject.getString("Date"));
-            datoBTC.setPrecio(jsonObject.getDouble("Price"));
-            datoBTC.setAbierto(jsonObject.getDouble("Open"));
-            datoBTC.setAlto(jsonObject.getDouble("High"));
-            datoBTC.setChangePercent(jsonObject.getDouble("ChangePercentFromLastMonth"));
-            datoBTC.setVolumen(jsonObject.getString("Volume"));
+
+            for (DatoBTC dato : datosAPI) {
+                JSONObject objectDatoBtc = new JSONObject();
+                objectDatoBtc.put("Fecha", dato.getFecha());
+                objectDatoBtc.put("Precio", dato.getPrecio());
+                objectDatoBtc.put("Abierto", dato.getAbierto());
+                objectDatoBtc.put("Alto", dato.getAlto());
+                objectDatoBtc.put("Change", dato.getChangePercent());
+                objectDatoBtc.put("Volumen", dato.getVolumen());
+                jsonArrayDatoBtc.put(objectDatoBtc);
+            }
         }
         catch (JSONException ex)
         {
-            System.out.println(ex.getMessage());
+            System.out.println("ERROR " + ex.getMessage());
         }
         catch (Exception ex)
         {
-            System.out.println("ERROR "+ ex.getMessage());
+            System.out.println(ex.getMessage());
         }
+
+        //System.out.println(jsonArrayDatoBtc.toString());
+
+
+    }
+
+    public static DatoBTC jsonToDatoBTC(JSONObject jsonObject, DatoBTC datoBTC) throws JSONException
+    {
+
+        datoBTC.setFecha(jsonObject.getString("Date"));
+        datoBTC.setPrecio(jsonObject.getDouble("Price"));
+        datoBTC.setAbierto(jsonObject.getDouble("Open"));
+        datoBTC.setAlto(jsonObject.getDouble("High"));
+        datoBTC.setChangePercent(jsonObject.getDouble("ChangePercentFromLastMonth"));
+        datoBTC.setVolumen(jsonObject.getString("Volume"));
+
         return datoBTC;
     }
 
