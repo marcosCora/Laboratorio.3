@@ -48,7 +48,57 @@ public class GestoraPersonaje {
         return origin;
     }
 
+    public JSONArray toJson()
+    {
+        JSONArray jsonArray = new JSONArray();
+        try {
+            for (Personaje p : personajes) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("ID", p.getId());
+                jsonObject.put("name", p.getName());
+                jsonObject.put("status", p.getStatus());
+                jsonObject.put("species", p.getSpecies());
+                jsonObject.put("type", p.getType());
+                jsonObject.put("gender", p.getGender());
 
+                JSONObject jsonObjectOrigin = new JSONObject();
+                Origin origin = p.getOrigin();
+                jsonObjectOrigin.put("Name", origin.getName());
+                jsonObjectOrigin.put("Url", origin.getUrl());
+
+                jsonObject.put("Origin", jsonObjectOrigin);
+                jsonObject.put("create", p.getCreate());
+
+                JSONArray jsonArrayEpisodios = new JSONArray();
+                ArrayList<String> episiodios = p.getEpisode();
+                for (String s: episiodios)
+                {
+                    jsonArrayEpisodios.put(s);
+                }
+                jsonObject.put("episode", jsonArrayEpisodios);
+
+                jsonArray.put(jsonObject);
+            }
+        }
+        catch (JSONException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+        return jsonArray;
+    }
+
+    public void guardaPersonajeArch()
+    {
+        ControladoraArchivo<Personaje> controladora= new ControladoraArchivo<>(personajes);
+        controladora.guardar("Personajes.dat");
+    }
+
+    public void leerPersonajesArch()
+    {
+        ControladoraArchivo<Personaje> controladora= new ControladoraArchivo<>(personajes);
+        controladora.leer(personajes,"Personajes.dat");
+    }
 
 
 
@@ -60,6 +110,10 @@ public class GestoraPersonaje {
             System.out.println("\n" + p.toString());
         }
     }
+
+
+
+
 
 
 }

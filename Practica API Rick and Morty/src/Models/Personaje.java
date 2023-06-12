@@ -3,9 +3,10 @@ package Models;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Personaje {
+public class Personaje implements Serializable {
 
     private int id;
     private String name;
