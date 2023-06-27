@@ -1,0 +1,49 @@
+para cargar 2 usuarios en el main:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+	Usuario usuario = new Usuario("admin", "administrador", "7600", "admin123", "administrador@gmail.com", "admin123", TipoUsuario.ADMINISTRADOR);
+        usuario.setCodigoAdmin("holajava");
+
+        Usuario usuario2 = new Usuario("Gonzalo", "Benofi", "7600", "gonza", "gonza@gmail.com", "gonza123", TipoUsuario.CLIENTE);
+        GestoraDeUsuarios gestora = new GestoraDeUsuarios();
+        gestora.agregarUsuario(usuario);
+        gestora.agregarUsuario(usuario2);
+        gestora.guardarArchivo();
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+usuarios admin:
+nombre de usuario: admin123
+contraseña: admin123
+codigo admin: holajava
+
+usuario normal:
+nombre de usuario: gonza
+contraseña: gonza123
+
+para cargar productos desde el main:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Producto celular = new Celular(TipoProducto.CELULAR, "Iphone 11", "Apple", 200000, 5, "Excelente equipo con muy buenas prestaciones, buena camara y rendmiento.", 0, 0, 6.1, "1080 FULL HD", "Cable de carga - caja - manueales", "A14 bionic", 3, "IOS 15", 128, "Camara principal de 12mpx y un gran angulas de 8 mpx", 2, "1 sensor de 8 mpx");
+        Producto compu = new Computadora(TipoProducto.COMPUTADORA, "ThinkPad", "Lenovo", 450000, 2, "Excelente equipo para realizar todo tipo de trabajo de oficina como trabajos dirigidos a la programacion", 2, 0, 15.6, "Pantalla con una resolucion de 1080 FULL HD", "Cargador", "Intel I5", 8, "Windows 10", 256, "720p", "5 horas carga maxima", true, TipoPc.NOTEBOOK);
+        Producto tele = new Televisor(TipoProducto.TELEVISOR, "50AU7000", "Samsung", 147000, 80, "Televisor smart tv con acceso a todo tipo de aplicaciones con una pantalla de increible resolcuon", 1, 0, 52, "4k 120fps", "Control remoto - pilas", "4 nucleos", 4, "Andriod tv", 8, true, TipoPantalla.LED);
+
+        Producto celular1 = new Celular(TipoProducto.CELULAR, "Moto G72", "Motorola", 139000, 5, "Excelente equipo con una camara profesional y bateria de larga duracion", 0, 0, 6.6, "1080 FULL HD", "Cable de carga - caja - manueales", "MediaTek Helio G99", 6, "Android 12", 128, "Camara trasera principal de 108Mpx", 4, "Cámara frontal principal: 16 Mpx");
+        Producto compu1 = new Computadora(TipoProducto.COMPUTADORA, "X515EA", "Asus", 340000, 3, "La notebook Asus X515EA es una solución tanto para trabajar y estudiar como para entretenerte. ", 2, 0, 15.6, "Pantalla con una resolucion de 1080 FULL HD", "Cargador", "Intel Core i5 de 4 núcleos", 8, "Windows 10", 256, "720p", "5 horas carga maxima", true, TipoPc.NOTEBOOK);
+        Producto tele1 = new Televisor(TipoProducto.TELEVISOR, "7400 Series 55PUD7406/77", "Phillip", 225000, 80, "Con el Smart TV 55PUD7406 vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.", 1, 0, 55, "4k 120fps", "Control remoto", "Quad Core de 4 nucleos", 3, "Andorid 10", 8, true, TipoPantalla.LED);
+
+        Producto celular2= new Celular(TipoProducto.CELULAR, "Galaxy A14", "Samsung", 99000, 5, "Excelente equipo con una gran capacidad de almacenamiento y bateria de larga duracion", 100, 0, 6.6, "1080 FULL HD", "Cable de carga - caja - manueales", " One UI Core 5", 4, "Android 13", 128, "Camara trasera principal de 50Mpx", 4, "Cámara frontal principal: 13 Mpx");
+        Producto compu2= new Computadora(TipoProducto.COMPUTADORA, "All In One Lite E24", "Banghó", 510000, 3, "All In One Banghó Lite E24 I5, ofrece la mejor experiencia visual con resolución Full HD de 24\". Equipado con un Procesador Intel Core i5 de 12ava Generación, 8GB de RAM, disco sólido de 480Gb y Windows 11 Home. ", 2, 0, 24, "Pantalla con una resolucion de 1080 FULL HD", "Teclado - Mouse - Parlantes", "Intel Core i5", 8, "Windows 11", 480, "720p", "-", true, TipoPc.PCDEESCRITORIO);
+        Producto tele2= new Televisor(TipoProducto.TELEVISOR, "43UQ8050PSB", "LG", 160000, 60, "Viví imágenes 4K más reales, con finos detalles y colores más vivos con este Smart TV, a través de las pantallas LG que ofrecen cuatro veces más resolución que los Full HD. Y disfrutá de las imágenes más vivas.", 5, 0, 43, "4k 120fps", "Control remoto", "α5 Gen5 AI", 3, "webOS Smart TV", 8, true, TipoPantalla.LED);
+
+        GestoraDeProductos gestoraP = new GestoraDeProductos();
+        gestoraP.agregar(celular.getTipoProducto(), celular);
+        gestoraP.agregar(compu.getTipoProducto(), compu);
+        gestoraP.agregar(tele.getTipoProducto(), tele);
+        gestoraP.agregar(celular1.getTipoProducto(), celular1);
+        gestoraP.agregar(compu1.getTipoProducto(), compu1);
+        gestoraP.agregar(tele1.getTipoProducto(), tele1);
+        gestoraP.agregar(celular2.getTipoProducto(), celular2);
+        gestoraP.agregar(compu2.getTipoProducto(), compu2);
+        gestoraP.agregar(tele2.getTipoProducto(), tele2);
+        gestoraP.guardarArchivo();
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
